@@ -210,3 +210,95 @@ BUILD METHOD
 8. Row: Arranges the child widgets horizontally to display the label 'Total and the total amount
 
 9. ElevatedButton: A button that allows the user to checkout. When pressed, it calls the checkout method.
+
+
+
+
+Hi im Sun Del Valle and here my part and explanation:
+
+Explanation of cart_screen.dart
+
+The CartScreen class in Flutter is designed to display and manage a shopping cart in an app. It allows users to view items added to their cart, remove items, and proceed to checkout.
+
+Key Components:
+
+1. Imports:
+   - The code imports necessary packages and other Dart files that contain models and additional screens, such as:
+     - flutter/material.dart for UI components.
+     - Models like Item and Sale for managing cart items and sales data.
+     - SalesHistory to track completed sales.
+     - Custom components like CartItemTile and other screens like ReceiptScreen.
+
+2. CartScreen Class:
+   - CartScreen is a StatefulWidget because it needs to handle dynamic changes in the cart's state.
+   - It takes a list of Item objects as a parameter, representing the current items in the cart.
+
+3. State Management:
+   - _CartScreenState Class:
+     - Manages the state of the cart, allowing for updates and interactions.
+     - _removeFromCart(Item item):** Removes an item from the cart and updates the UI.
+     - _checkout():
+       - Calculates the total price of all items in the cart.
+       - Creates a Sale object to store the sale information, including the items, total price, and the current date and time.
+       - Adds the sale to the SalesHistory.
+       - Navigates to the ReceiptScreen to show the receipt of the sale and clears the cart after returning.
+
+4. UI Layout:
+   - AppBar: Displays a simple app bar with the title "Cart".
+   - Body:
+     - ListView.builder: Dynamically builds a list of CartItemTile widgets for each item in the cart.
+     - Total Display: Shows the total price of the items in the cart.
+     - Checkout Button: An elevated button to proceed with checkout, triggering the _checkout method when pressed.
+
+5. User Interaction:
+   - Users can remove items from the cart by tapping on each item's remove button.
+   - They can proceed to checkout, where a receipt will be generated, and the cart will be cleared.
+
+Explanation of cart-item_tile.dart, 
+
+1. Imports:
+import 'package:flutter/material.dart';
+import 'package:form_validation/models/item.dart';
+- Flutter Material Library: This provides essential widgets and tools to build the UI.
+- Item Model: This is a custom data model that represents an item in the shopping cart.
+
+2. Class Definition:
+class CartItemTile extends StatelessWidget {
+- Stateless Widget: CartItemTile is a stateless widget, meaning its properties don't change over time.
+
+3. Properties:
+final Item item;
+final VoidCallback onRemove;
+- Item: An instance of the Item class, representing the item to display.
+- onRemove: A callback function that gets called when the user wants to remove the item from the cart.
+
+4. Constructor:
+const CartItemTile({super.key, required this.item, required this.onRemove});
+- Constructor: It takes two required parameters: item and onRemove. The super.key helps Flutter manage widget keys.
+
+- ListTile: This widget creates a horizontal tile that displays information about the item.
+  - Title: Displays the name of the item.
+  - Subtitle: Shows the price of the item in a currency format (₱ with two decimal places).
+  - Trailing IconButton: A button with a "remove circle" icon, which triggers the onRemove callback when pressed.
+
+Explanation of ‘category_tile.dart’
+
+The CategoryTile class is a Flutter widget used to display a category and its associated items in a visually appealing and interactive manner. Here's a quick breakdown:
+
+- Purpose: Displays a category with its items using a card and expandable list.
+
+- Components:
+  - Imports: Includes Flutter material components and custom models for Category and Item.
+  - Class Definition: 
+    - Extends StatelessWidget, meaning it doesn’t maintain any state.
+    - Takes a Category and a function addToCart to handle item interactions.
+  - Constructor: Initializes with required category and addToCart parameters.
+  - Build Method: 
+    - Uses a Card with rounded corners for styling.
+    - Implements an ExpansionTile that expands to show items when tapped.
+    - Maps each item in the category to an ItemTile that can be interacted with via the addToCart function.
+
+- Key Features:
+  - UI Design: Leverages Flutter's material design for a clean look.
+  - Interactivity: Supports user interaction by allowing items to be added to a cart.
+  - Dynamic Content: Renders content based on the Category and Item data.
