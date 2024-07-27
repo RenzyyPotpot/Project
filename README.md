@@ -10,3 +10,5 @@ Sa parehong halimbawa (StatelessWidget at StatefulWidget), ginagamit natin ang @
 Bakit Kailangan ng override?:
 
 Ang override ay nakakatulong upang mas malinaw na ipakita na ang isang method ay sadyang pinapalitan, at ito rin ay naglalagay ng error sa panahon ng compilation kung ang method ay hindi umiiral sa parent class. Nakakatulong ito upang maiwasan ang mga typo o maling method signature na maaaring magdulot ng bugs.
+
+
